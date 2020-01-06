@@ -1,0 +1,19 @@
+--- # 我的YAML檔
+version: "3.7"
+services:
+
+  nginx:
+    restart: always # 指定自動重啟container
+    image: nginx:alpine
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    links:
+      - node
+    ports:
+      - 80:80
+
+  node:
+    restart: always # 指定自動重啟container
+    build:
+      context: ./server
+...
